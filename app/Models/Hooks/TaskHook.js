@@ -1,0 +1,20 @@
+'use strict'
+
+const Kue = use('Kue')
+const NewTaskMailJob = use('App/Jobs/NewTaskMail')
+
+const TaskHook = (exports = module.exports = {})
+
+TaskHook.sendNewTaskMail = async taskInstance => {
+  if (!taskInstance.user_id && !taskInstance.dirty.user_id) return
+
+  const { username, email } = await taskInstance.user().fetch()
+  const file = await taskInstance.file().fetch()
+  const { title } = taskInstance
+
+  Kue.dispatch(
+    NewTaskMailJob.key,
+    { email, username, file, title },
+    { attemps: 3 }
+  )
+}
