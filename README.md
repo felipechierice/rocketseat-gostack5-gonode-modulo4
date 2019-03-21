@@ -1,3 +1,9 @@
+# rocketseat-gostack5-gonode-modulo4
+
+API REST desenvolvida utilizando a framework AdonisJS do NodeJS. Produto do módulo 4 de NodeJS do bootcamp da Rocketseat, GoStack 5.
+
+CRUDs, autenticação, envio de e-mails, filas de processos (Kue & Redis) e validação de requisições.
+
 # Adonis API application
 
 This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
